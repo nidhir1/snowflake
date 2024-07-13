@@ -4,7 +4,7 @@
 
 ## CONTEXT
 * ### [Introduction](snowflake-introduction.md)
-* ### [Database, Schema, and User](snowflake-db-sch-user.md)
+* ### [Database, Schema, Role and User](snowflake-db-sch-role-user.md)
 * ### [Datatypes](snowflake-datatypes.md)
 * ### [DDL](snowflake-ddl.md)
     * Create
