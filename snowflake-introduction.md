@@ -1,3 +1,5 @@
+![MySQL Tinitiate Image](mysql_tinitiate.png)
+
 # Snowflake
 &copy; TINITIATE.COM
 
