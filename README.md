@@ -3,7 +3,7 @@
 &copy; TINITIATE.COM
 
 ## CONTEXT
-* ### [Introduction to Databases](snowflake-introduction.md)
+* ### [Introduction to Databases](introduction-to-databases.md)
 * ### [Introduction to Cloud Platforms](introduction-to-cloud-platforms.md)
 * ### [Platform As A Service (PaaS)](platform-as-a-service.md)
 * ### [Software As A Service (Saas)](software-as-a-service.md)
