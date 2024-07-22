@@ -3,7 +3,15 @@
 &copy; TINITIATE.COM
 
 ## CONTEXT
+* ### [Introduction to Databases](snowflake-introduction.md)
+* ### [Introduction to Cloud Platforms](introduction-to-cloud-platforms.md)
+* ### [Platform As A Service (PaaS)](platform-as-a-service.md)
+* ### [Software As A Service (Saas)](software-as-a-service.md)
 * ### [Introduction](snowflake-introduction.md)
+* ### [Snowflake SaaS Cloud Platform](snowflake-saas-cloud-platform.md)
+* ### [Traditional RDBMS vs Snowflake Platform](traditional-rdbms-vs-snowflake-platform.md)
+* ### [Snowflake Versions, Architecture and Pricing](snowflake-versions-architecture-and-pricing.md)
+* ### [Working Snowflake Components](working-snowflake-components.md)
 * ### [Database, Schema, Role and User](snowflake-db-sch-role-user.md)
 * ### [Datatypes](snowflake-datatypes.md)
 * ### [DDL](snowflake-ddl.md)
