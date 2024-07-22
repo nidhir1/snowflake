@@ -11,7 +11,7 @@
 * ### [Snowflake SaaS Cloud Platform](snowflake-saas-cloud-platform.md)
 * ### [Traditional RDBMS vs Snowflake Platform](traditional-rdbms-vs-snowflake-platform.md)
 * ### [Snowflake Versions, Architecture and Pricing](snowflake-versions-architecture-and-pricing.md)
-* ### [Working Snowflake Components](working-snowflake-components.md)
+* ### [Working With Snowflake Components](working-with-snowflake-components.md)
 * ### [Database, Schema, Role and User](snowflake-db-sch-role-user.md)
 * ### [Datatypes](snowflake-datatypes.md)
 * ### [DDL](snowflake-ddl.md)

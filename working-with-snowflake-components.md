@@ -4,7 +4,7 @@
 
 ##### [Back To Context](./README.md)
 
-# Working Snowflake Components
+# Working With Snowflake Components
 
 ## Warehouses (Create/Alter/Drop)
 
