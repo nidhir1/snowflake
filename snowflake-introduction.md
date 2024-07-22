@@ -1,6 +1,5 @@
-![MySQL Tinitiate Image](mysql_tinitiate.png)
-
-# Snowflake
+![Snowflake Tinitiate Image](snowflake_tinitiate.png)
+# Snowflake Tutorial
 &copy; TINITIATE.COM
 
 ##### [Back To Context](./README.md)
