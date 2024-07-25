@@ -5,14 +5,15 @@
 ## CONTEXT
 * ### [Introduction to Databases](introduction-to-databases.md)
 * ### [Introduction to Cloud Platforms](introduction-to-cloud-platforms.md)
+* ### [Infrastructure As A Service (IaaS)](infrastructure-as-a-service.md)
 * ### [Platform As A Service (PaaS)](platform-as-a-service.md)
-* ### [Software As A Service (Saas)](software-as-a-service.md)
+* ### [Software As A Service (SaaS)](software-as-a-service.md)
 * ### [Introduction To Snowflake](introduction-to-snowflake.md)
 * ### [Snowflake SaaS Cloud Platform](snowflake-saas-cloud-platform.md)
 * ### [Traditional RDBMS vs Snowflake Platform](traditional-rdbms-vs-snowflake-platform.md)
-* ### [Snowflake Versions, Architecture and Pricing](snowflake-versions-architecture-and-pricing.md)
+* ### [Snowflake Versions, Architecture, and Pricing](snowflake-versions-architecture-and-pricing.md)
 * ### [Working With Snowflake Components](working-with-snowflake-components.md)
-* ### [Database, Schema, Role and User](snowflake-db-sch-role-user.md)
+* ### [Database, Schema, Role, and User](snowflake-db-sch-role-user.md)
 * ### [Datatypes](snowflake-datatypes.md)
 * ### [DDL](snowflake-ddl.md)
     * Create
@@ -96,7 +97,7 @@
             * UTC
             * Offsets
             * Applying an Offset to a Date Datatype Column
-        * Cast a DateTime to DateTime with Timezone (in UTC, EST and IST TimeZones)
+        * Cast a DateTime to DateTime with Timezone (in UTC, EST, and IST TimeZones)
         * Cast a DateTime Timezone to another TimeZone
     * DATE_TRUNC Function (DATE_TRUNC)
     * EXTRACT Function (EXTRACT)
@@ -122,6 +123,80 @@
     * Recursive CTEs
     * Common Use Cases for CTEs
     * Benefits of Using CTEs
+* ### [Snowflake Cloning](snowflake-cloning.md)
+    * Zero Copy Cloning
+    * Schema Level Cloning
+    * Real-time Uses
+    * Storage and Metadata Layers
+* ### [Transient Tables](snowflake-transient-tables.md)
+    * Creating Transient Tables
+    * Use Cases for Transient Tables
+    * Differences Between Permanent and Transient Tables
+* ### [Security Management](snowflake-security-management.md)
+    * Security Entities
+    * Securable Objects, Users & Roles
+    * Privileges and Privilege Groups
+    * Security Hierarchy
+    * Role-Based Access Control (RBAC)
+    * Role Hierarchy and Dependency
+    * Auditing Users and Password Policy
+* ### [Transactions](snowflake-transactions.md)
+    * ACID Properties
+    * Transaction Types
+    * Implicit, Explicit, and Auto Commit
+    * DDL Statements and Transactions
+    * BEGIN TRANSACTION & COMMIT
+    * current_transaction() Usage
+    * Failed Transactions with SPs
+    * Transactions with Stored Procedures
+* ### [Streams & Audits](snowflake-streams-audits.md)
+    * Stream Object and DML Auditing
+    * Stream Types: Standard, Append Only, Insert Only
+    * Data Flow with Streams
+    * Time Travel with Streams
+    * Auditing INSERT, UPDATE, DELETE
+* ### [ETL, Stages & Pipes](snowflake-etl-stages-pipes.md)
+    * Tasks and Partitions
+    * Directed Acyclic Graph (DAG)
+    * Tasks Schedules and RESUME Options
+    * Partitions: Micro Partition, Cluster Key, ReClusters
+    * Stages: Internal and External
+    * User and Table Stages
+    * COPY Command, Bulk Data Loads
+* ### [Advanced Features](snowflake-advanced-features.md)
+    * Snowflake on Azure & External Storage
+    * SnowPipes & Incremental Loads
+    * Data Unloading Concepts
+    * External Data Stages
+    * Snowflake Integration with Azure Data Factory
+    * Data Governance in Snowflake
+    * Secure Data Sharing
+    * Snowflake Data Marketplace
+* ### [SnowSQL and Scripting](snowsql-scripting.md)
+    * SnowSQL Concepts and Client Installation
+    * Working with SnowSQL: DDL, DML, SELECT Operations
+    * Variables, Batch Processing
+    * Snowflake SQL Query Syntax
+* ### [Performance Tuning](snowflake-performance-tuning.md)
+    * Indexes and Performance Tuning
+    * Clustering and Partitioning
+    * Query Optimization: Query Profiler, Best Practices
+    * Caching Mechanisms: Result, Metadata, Data
+* ### [Python and Other Tools](snowflake-python-tools.md)
+    * Using Python with Snowflake: Pandas, Snowpark
+    * Boto3 for AWS Integration
+    * Data Movement between Snowflake and Other RDBMS
+    * Building Applications: Data Pipelines, ML Models, Web Applications
+    * Integrating Snowflake with BI Tools: Tableau, Power BI
+* ### [Data Governance](snowflake-data-governance.md)
+    * Setting Up Data Governance Policies
+    * Ensuring Data Quality and Consistency
+    * Compliance and Security: GDPR, HIPAA
+    * Implementing Data Security Best Practices
+* ### [Use Cases and Best Practices](snowflake-use-cases-best-practices.md)
+    * Real-World Use Cases: Case Studies, Industry-Specific Applications
+    * Best Practices for Snowflake: Effective Data Management, Optimization Tips
+
 ***
 | &copy; TINITIATE.COM |
 |----------------------|
