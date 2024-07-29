@@ -1,5 +1,5 @@
 ![Snowflake Tinitiate Image](snowflake_tinitiate.png)
-# Snowflake Tutorial
+# Snowflake
 &copy; TINITIATE.COM
 
 ## CONTEXT
@@ -22,6 +22,7 @@
 * ### [DDL - Constraints](snowflake-ddl-constraints.md)
     * Not Null
     * Unique
+    * Check
     * Primary Key
     * Foreign Key
 * ### [DML](snowflake-dml.md)

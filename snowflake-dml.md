@@ -1,15 +1,15 @@
-![SQL Server Tinitiate Image](sqlserver_tinitiate.png)
+![Snowflake Tinitiate Image](snowflake_tinitiate.png)
 
-# SQL Server
+# Snowflake
 &copy; TINITIATE.COM
 
 ##### [Back To Context](./README.md)
 
 # DML - Data Manipulation Language
-* In SQL Server, Data Manipulation Language (DML) consists of SQL commands that allow users to manipulate data within a database.
+* In Snowflake, Data Manipulation Language (DML) consists of SQL commands that allow users to manipulate data within a database.
 * DML commands are used to perform operations such as inserting, updating, and deleting data.
 
-## Primary DML commands in SQL Server:
+## Primary DML commands in Snowflake:
 ### INSERT:
 * This command is used to add new rows of data into a table.
 * You can specify the values to be inserted into each column of the table.
@@ -46,6 +46,7 @@ FROM emp.dept;
 -- Incorrect data violations
 -- Primary Key violation
 INSERT INTO emp.dept (deptid, dname) VALUES (3000, 'MARKETING');
+-- It allows data insertion without enforcing the primary key in Snowflake
 
 -- DataType Size violation
 INSERT INTO emp.dept (deptid, dname) 
@@ -55,6 +56,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
 -- Foreign Key violation
 INSERT INTO emp.emp (empid, ename, sal, deptid)
  VALUES (15, '4F', 12000.00, 5000);
+-- It allows data insertion without enforcing the foreign key in Snowflake
 ```
 
 ### UPDATE:

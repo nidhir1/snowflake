@@ -1,53 +1,55 @@
-![SQL Server Tinitiate Image](sqlserver_tinitiate.png)
+![Snowflake Tinitiate Image](snowflake_tinitiate.png)
 
-# SQL Server
+# Snowflake
 &copy; TINITIATE.COM
 
 ##### [Back To Context](./README.md)
 
-# DQL - Basic Operators
-* In SQL Server, operators are symbols or keywords used to perform operations on data, such as arithmetic operations, logical comparisons, and pattern matching.
+# DQL - Basic Operators 
+- In Snowflake, operators are symbols or keywords used to perform operations on data, such as arithmetic operations, logical comparisons, and pattern matching.
 
-## Commonly used operators in SQL Server:
-### Equality Operator (=):
-* The equality operator (=) is used in a WHERE clause to filter rows where the value in a column is equal to a specified value.
-* It returns true if the values are equal, otherwise false.
+## Commonly used operators in Snowflake: 
+
+### Equality Operator (=): 
+- The equality operator (=) is used in a WHERE clause to filter rows where the value in a column is equal to a specified value.
+- It returns true if the values are equal, otherwise false.
 ```sql
 -- Retrieve employees with a specific job title
 SELECT *
 FROM employees.emp
 WHERE job = 'manager';
 ```
-### Inequality Operator (<>):
-* The inequality operator (<>), also known as the not equal to operator, is used in a WHERE clause to filter rows where the value in a column is not equal to a specified value.
-* It returns true if the values are not equal, otherwise false.
+
+### Inequality Operator (<>): 
+- The inequality operator (<>), also known as the not equal to operator, is used in a WHERE clause to filter rows where the value in a column is not equal to a specified value.
+- It returns true if the values are not equal, otherwise false.
 ```sql
 -- Retrieve employees with a job title other than 'manager'
 SELECT *
 FROM employees.emp
 WHERE job <> 'manager';
 ```
-### IN Operator:
-* The IN operator is used to specify multiple values in a WHERE clause.
-* It allows you to filter data based on whether a specified value matches any value in a list.
+### IN Operator: 
+- The IN operator is used to specify multiple values in a WHERE clause.
+- It allows you to filter data based on whether a specified value matches any value in a list.
 ```sql
 -- Retrieve employees from departments 10 and 20
 SELECT *
 FROM employees.emp
 WHERE deptno IN (10, 20);
 ```
-### NOT IN Operator:
-* The NOT IN operator is the negation of the IN operator.
-* It is used to exclude rows where the value in a specified column matches any value in a list.
+### NOT IN Operator: 
+- The NOT IN operator is the negation of the IN operator.
+- It is used to exclude rows where the value in a specified column matches any value in a list.
 ```sql
 -- Retrieve employees not from departments 10 and 20
 SELECT *
 FROM employees.emp
 WHERE deptno NOT IN (10, 20);
 ```
-### LIKE Operator:
-* The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
-* It allows you to perform pattern matching using wildcard characters: '%' (matches zero or more characters) and '_' (matches any single character).
+### LIKE Operator: 
+- The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+- It allows you to perform pattern matching using wildcard characters: '%' (matches zero or more characters) and '_' (matches any single character).
 ```sql
 -- Retrieve employees whose names start with 's'
 SELECT *
@@ -82,59 +84,59 @@ SELECT *
 FROM employees.emp
 WHERE ename LIKE '_a_es';
 ```
-### NOT LIKE Operator:
-* The NOT LIKE operator is the negation of the LIKE operator.
-* It is used to exclude rows where a specified pattern does not match in a column.
+### NOT LIKE Operator: 
+- The NOT LIKE operator is the negation of the LIKE operator.
+- It is used to exclude rows where a specified pattern does not match in a column.
 ```sql
 -- Retrieve employees whose names do not start with 's'
 SELECT *
 FROM employees.emp
 WHERE ename NOT LIKE 's%';
 ```
-### BETWEEN Operator:
-* The BETWEEN operator is used to filter results within a specified range.
-* It is inclusive, meaning it includes the boundary values specified in the range.
+### BETWEEN Operator: 
+- The BETWEEN operator is used to filter results within a specified range.
+- It is inclusive, meaning it includes the boundary values specified in the range.
 ```sql
 -- Retrieve employees hired between '1982-01-01' and '1983-01-01'
 SELECT *
 FROM employees.emp
 WHERE hiredate BETWEEN '1982-01-01' AND '1983-01-01';
 ```
-### Greater Than (>):
-* The greater than operator (>), when used in a WHERE clause, filters rows where the value in a column is greater than a specified value.
+### Greater Than (>): 
+- The greater than operator (>), when used in a WHERE clause, filters rows where the value in a column is greater than a specified value.
 ```sql
 -- Retrieve employees with salaries greater than 2500
 SELECT *
 FROM employees.emp
 WHERE sal > 2500;
 ```
-### Greater Than or Equal To (>=):
-* The greater than or equal to operator (>=) filters rows where the value in a column is either greater than or equal to a specified value.
+### Greater Than or Equal To (>=): 
+- The greater than or equal to operator (>=) filters rows where the value in a column is either greater than or equal to a specified value.
 ```sql
 -- Retrieve employees hired on or after '1982-01-01'
 SELECT *
 FROM employees.emp
 WHERE hiredate >= '1982-01-01';
 ```
-### Less Than (<):
-* The less than operator (<) filters rows where the value in a column is less than a specified value.
+### Less Than (<): 
+- The less than operator (<) filters rows where the value in a column is less than a specified value.
 ```sql
 -- Retrieve employees with salaries less than 1500
 SELECT *
 FROM employees.emp
 WHERE sal < 1500;
 ```
-### Less Than or Equal To (<=):
-* The less than or equal to operator (<=) filters rows where the value in a column is either less than or equal to a specified value.
+### Less Than or Equal To (<=): 
+- The less than or equal to operator (<=) filters rows where the value in a column is either less than or equal to a specified value.
 ```sql
 -- Retrieve employees hired on or before '1982-01-01'
 SELECT *
 FROM employees.emp
 WHERE hiredate <= '1982-01-01';
 ```
-### EXISTS Operator:
-* The EXISTS operator is used to test for the existence of rows returned by a subquery.
-* If the subquery returns any rows, the EXISTS condition is true.
+### EXISTS Operator: 
+- The EXISTS operator is used to test for the existence of rows returned by a subquery.
+- If the subquery returns any rows, the EXISTS condition is true.
 ```sql
 -- Retrieve employees who have worked on a project
 SELECT *
@@ -145,10 +147,10 @@ WHERE EXISTS (
     WHERE e.empno = ep.empno
 );
 ```
-### NOT EXISTS Operator:
-* The NOT EXISTS operator is the negation of the EXISTS operator.
-* It is used to test for the absence of rows returned by a subquery.
-* If the subquery returns no rows, the NOT EXISTS condition is true.
+### NOT EXISTS Operator: 
+- The NOT EXISTS operator is the negation of the EXISTS operator.
+- It is used to test for the absence of rows returned by a subquery.
+- If the subquery returns no rows, the NOT EXISTS condition is true.
 ```sql
 -- Retrieve employees who have not worked on any project
 SELECT *

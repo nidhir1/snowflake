@@ -1,5 +1,5 @@
 ![Snowflake Tinitiate Image](snowflake_tinitiate.png)
-# Snowflake Tutorial
+# Snowflake 
 &copy; TINITIATE.COM
 
 ##### [Back To Context](./README.md)

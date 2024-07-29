@@ -1,13 +1,13 @@
-![SQL Server Tinitiate Image](sqlserver_tinitiate.png)
+![Snowflake Tinitiate Image](snowflake_tinitiate.png)
 
-# SQL Server
+# Snowflake
 &copy; TINITIATE.COM
 
 ##### [Back To Context](./README.md)
 
 # DQL Data Setup
 * Data Query Language (DQL) is a powerful tool used to retrieve and manipulate data within a database management system.
-* Before diving into querying data that is to going into the details of Data Query Language (DQL) commands, it's essential to have a properly structured dataset to work with.
+* Before diving into querying data and going into the details of Data Query Language (DQL) commands, it's essential to have a properly structured dataset to work with.
 * This preliminary step lays the groundwork for a comprehensive understanding of DQL operations, enabling users to effectively utilize DQL commands to query and manipulate data within a database management system.
 * In this tutorial, we'll walk through the process of setting up Employees DQL data, step by step.
 
@@ -15,19 +15,29 @@
 * Create dataset under **EMPLOYEES** schema
 ```sql
 -- Switch to the tinitiate database
-USE tinitiate;
+USE Database tinitiate;
+USE WAREHOUSE COMPUTE_WH;
+SHOW GRANTS TO ROLE tirole;
+USE ROLE ACCOUNTADMIN;
 
--- Set the default schema for your user to employees
-ALTER USER tiuser WITH DEFAULT_SCHEMA = employees;
+-- Grant necessary privileges to the user
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE tirole;
+GRANT USAGE ON DATABASE tinitiate TO ROLE tirole;
+GRANT USAGE ON SCHEMA tinitiate.employees TO ROLE tirole;
+GRANT ROLE tirole TO USER tinitiate;
+
+-- Set the default role and schema for the user session
+USE ROLE tirole;
+USE SCHEMA employees;
 ```
 *  Drop tables if exists
 ```sql
 -- Drop tables from the "employees" schema if any exists
-DROP TABLE employees.emp;
-DROP TABLE employees.dept;
-DROP TABLE employees.salgrade;
-DROP TABLE employees.projects;
-DROP TABLE employees.emp_projects;
+DROP TABLE IF EXISTS employees.emp;
+DROP TABLE IF EXISTS employees.dept;
+DROP TABLE IF EXISTS employees.salgrade;
+DROP TABLE IF EXISTS employees.projects;
+DROP TABLE IF EXISTS employees.emp_projects;
 ```
 * Create `employees.dept` table
 ```sql
@@ -68,7 +78,6 @@ CREATE TABLE employees.emp
 ```sql
 -- Create table employees.salgrade
 CREATE TABLE employees.salgrade
-
 ( 
   grade INT NOT NULL,
   losal INT,
@@ -134,49 +143,21 @@ INSERT INTO employees.dept (deptno, dname, loc)
 -- Insert data into employees.emp
 INSERT INTO employees.emp (
     empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7369, 'smith', 'clerk', 7902, '1980-12-17', 800, NULL, 20);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7499, 'allen', 'salesman', 7698, '1981-02-20', 1600, NULL, 30);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7521, 'ward', 'salesman', 7698, '1981-02-22', 1250, NULL, 30);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7566, 'jones', 'manager', 7839, '1981-04-02', 2975, NULL, 20);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7654, 'martin', 'salesman', 7698, '1981-09-28', 1250, 1400, 30);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7698, 'blake', 'manager', 7839, '1981-05-01', 2850, NULL, 30);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7782, 'clark', 'manager', 7839, '1981-06-09', 2450, NULL, 10);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7788, 'scott', 'analyst', 7566, '1982-12-09', 3000, NULL, 20);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7839, 'king', 'president', NULL, '1981-11-17', 5000, NULL, 10);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7844, 'turner', 'salesman', 7698, '1981-09-08', 1500, 0, 30);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7876, 'adams', 'clerk', 7788, '1983-01-12', 1100, NULL, 20);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7900, 'james', 'clerk', 7698, '1981-12-03', 950, NULL, 30);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7902, 'ford', 'analyst', 7566, '1981-12-03', 3000, NULL, 20);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (7934, 'miller', 'clerk', 7782, '1982-01-23', 1300, NULL, 10);
-INSERT INTO employees.emp (
-    empno, ename, job, mgr, hiredate, sal, commission, deptno)
-     VALUES (8000, 'newhire', 'clerk', 7782, '1982-01-23', 1300, NULL, 10);
+     VALUES (7369, 'smith', 'clerk', 7902, '1980-12-17', 800, NULL, 20),
+            (7499, 'allen', 'salesman', 7698, '1981-02-20', 1600, NULL, 30),
+            (7521, 'ward', 'salesman', 7698, '1981-02-22', 1250, NULL, 30),
+            (7566, 'jones', 'manager', 7839, '1981-04-02', 2975, NULL, 20),
+            (7654, 'martin', 'salesman', 7698, '1981-09-28', 1250, 1400, 30),
+            (7698, 'blake', 'manager', 7839, '1981-05-01', 2850, NULL, 30),
+            (7782, 'clark', 'manager', 7839, '1981-06-09', 2450, NULL, 10),
+            (7788, 'scott', 'analyst', 7566, '1982-12-09', 3000, NULL, 20),
+            (7839, 'king', 'president', NULL, '1981-11-17', 5000, NULL, 10),
+            (7844, 'turner', 'salesman', 7698, '1981-09-08', 1500, 0, 30),
+            (7876, 'adams', 'clerk', 7788, '1983-01-12', 1100, NULL, 20),
+            (7900, 'james', 'clerk', 7698, '1981-12-03', 950, NULL, 30),
+            (7902, 'ford', 'analyst', 7566, '1981-12-03', 3000, NULL, 20),
+            (7934, 'miller', 'clerk', 7782, '1982-01-23', 1300, NULL, 10),
+            (8000, 'newhire', 'clerk', 7782, '1982-01-23', 1300, NULL, 10);
 ```
 * Inserts for `employees.salgrade`
 ```sql
@@ -202,46 +183,20 @@ INSERT INTO employees.projects (projectno, budget, monthly_commission)
 -- Insert data into employees.emp_projects
 INSERT INTO employees.emp_projects (
     emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (1, 7369, 1, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (2, 7499, 2, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (3, 7521, 3, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (4, 7566, 1, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (5, 7654, 1, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (6, 7698, 2, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (7, 7782, 2, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (8, 7788, 2, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (9, 7839, 3, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (10, 7844, 3, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (11, 7876, 3, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (12, 7900, 2, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (13, 7902, 1, '1984-01-01', '1984-12-31');
-INSERT INTO employees.emp_projects (
-    emp_projectno, empno, projectno, start_date, end_date)
-     VALUES (14, 7934, 1, '1984-01-01', '1984-12-31');
+     VALUES (1, 7369, 1, '1984-01-01', '1984-12-31'),
+            (2, 7499, 2, '1984-01-01', '1984-12-31'),
+            (3, 7521, 3, '1984-01-01', '1984-12-31'),
+            (4, 7566, 1, '1984-01-01', '1984-12-31'),
+            (5, 7654, 1, '1984-01-01', '1984-12-31'),
+            (6, 7698, 2, '1984-01-01', '1984-12-31'),
+            (7, 7782, 2, '1984-01-01', '1984-12-31'),
+            (8, 7788, 2, '1984-01-01', '1984-12-31'),
+            (9, 7839, 3, '1984-01-01', '1984-12-31'),
+            (10, 7844, 3, '1984-01-01', '1984-12-31'),
+            (11, 7876, 3, '1984-01-01', '1984-12-31'),
+            (12, 7900, 2, '1984-01-01', '1984-12-31'),
+            (13, 7902, 1, '1984-01-01', '1984-12-31'),
+            (14, 7934, 1, '1984-01-01', '1984-12-31');
 ```
 
 ##### [Back To Context](./README.md)
