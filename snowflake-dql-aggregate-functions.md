@@ -1,20 +1,20 @@
-![SQL Server Tinitiate Image](sqlserver_tinitiate.png)
+![Snowflake Tinitiate Image](snowflake_tinitiate.png)
 
-# SQL Server
+# Snowflake
 &copy; TINITIATE.COM
 
 ##### [Back To Context](./README.md)
 
 # DQL - Aggregate Functions
-* Aggregate functions in SQL Server are used to perform calculations on a set of values and return a single value as a result.
-* They allow you to derive summary statistics or perform calculations across multiple rows in a table.
-* These functions can be combined with other clauses like GROUP BY, HAVING, and DISTINCT to perform more sophisticated analysis and summarization of data in SQL Server.
+- Aggregate functions in Snowflake are used to perform calculations on a set of values and return a single value as a result.
+- They allow you to derive summary statistics or perform calculations across multiple rows in a table.
+- These functions can be combined with other clauses like GROUP BY, HAVING, and DISTINCT to perform more sophisticated analysis and summarization of data in Snowflake.
 
-## Aggregate functions in SQL Server:
-### COUNT:
-* Counts the number of rows in a result set.
+## Aggregate functions in Snowflake: 
+### COUNT: 
+- Counts the number of rows in a result set.
 ```sql
--- Counts the number of rows in a emp table
+-- Counts the number of rows in an emp table
 SELECT COUNT(*) AS total_employees FROM employees.emp;
 
 -- Count the number of employees in each department
@@ -35,8 +35,9 @@ SELECT YEAR(hiredate) AS hire_year, COUNT(*) AS num_employees
 FROM employees.emp 
 GROUP BY YEAR(hiredate);
 ```
-### SUM:
-* Calculates the sum of values in a numeric column.
+
+### SUM: 
+- Calculates the sum of values in a numeric column.
 ```sql
 -- Calculates the sum of a sal of emp
 SELECT SUM(sal) AS total_salary FROM employees.emp;
@@ -66,8 +67,8 @@ GROUP BY deptno
 HAVING SUM(commission) > 500
 ORDER BY total_commission DESC;
 ```
-### AVG:
-* Computes the average of values in a numeric column.
+### AVG: 
+- Computes the average of values in a numeric column.
 ```sql
 -- Calculates the average value of a sal column
 SELECT AVG(sal) AS avg_salary FROM employees.emp;
@@ -90,13 +91,13 @@ HAVING AVG(sal) > 2500;
 
 -- Find the job position with the highest average salary and
 -- display the result along with the average salary
-SELECT TOP 1 job, AVG(sal) AS avg_salary 
+SELECT job, AVG(sal) AS avg_salary 
 FROM employees.emp 
 GROUP BY job
 ORDER BY avg_salary DESC;
 ```
-### MAX:
-* Retrieves the maximum value in a column.
+### MAX: 
+- Retrieves the maximum value in a column.
 ```sql
 -- Retrieves the maximum value in sal column
 SELECT MAX(sal) AS max_salary FROM employees.emp;
@@ -116,8 +117,8 @@ JOIN (
 ) AS max_salaries ON e.deptno = max_salaries.deptno
  AND e.sal = max_salaries.max_salary;
 ```
-### MIN:
-* Retrieves the minimum value in a column.
+### MIN: 
+- Retrieves the minimum value in a column.
 ```sql
 -- Retrieves the minimum value in sal column
 SELECT MIN(sal) AS min_salary FROM employees.emp;

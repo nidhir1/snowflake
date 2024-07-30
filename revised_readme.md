@@ -76,15 +76,17 @@
     * Reverse Function (REVERSE)
     * Replace Function (REPLACE)
     * Case Statement (CASE)
-    * ISNULL Function (IFNULL)
+    * NVL Function (NVL)
     * Coalesce Function (COALESCE)
     * SPLIT Function (SPLIT)
     * INITCAP Function (INITCAP)
 * ### [DQL - Date Functions](snowflake-dql-date-functions.md)
     * Current Date and Time (CURRENT_TIMESTAMP)
     * Date Part Function (DATE_PART)
+    * EXTRACT Function (EXTRACT)
     * Date Difference Function (DATEDIFF)
     * Date Addition/Subtraction (DATEADD, DATESUB)
+    * Date Truncation (DATE_TRUNC)
     * Date Formatting (TO_CHAR)
     * Weekday Function (DAYOFWEEK)
     * Date to String (Various formats)
@@ -100,8 +102,6 @@
             * Applying an Offset to a Date Datatype Column
         * Cast a DateTime to DateTime with Timezone (in UTC, EST, and IST TimeZones)
         * Cast a DateTime Timezone to another TimeZone
-    * DATE_TRUNC Function (DATE_TRUNC)
-    * EXTRACT Function (EXTRACT)
 * ### [DQL - Aggregate Functions](snowflake-dql-aggregate-functions.md)
     * Count
     * Sum

@@ -1,17 +1,17 @@
-![SQL Server Tinitiate Image](sqlserver_tinitiate.png)
+![Snowflake Tinitiate Image](snowflake_tinitiate.png)
 
-# SQL Server
+# Snowflake
 &copy; TINITIATE.COM
 
 ##### [Back To Context](./README.md)
 
-# DQL - Common Table Expressions (CTEs)
-* In SQL Server, a Common Table Expression (CTE) is a temporary result set that you can reference within a SELECT, INSERT, UPDATE, or DELETE statement.
-* CTEs provide a way to write more readable and maintainable queries by breaking down complex queries into simpler parts.
-* CTEs are defined using the `WITH` keyword.
+# DQL - Common Table Expressions (CTEs) 
+- In Snowflake, a Common Table Expression (CTE) is a temporary result set that you can reference within a SELECT, INSERT, UPDATE, or DELETE statement.
+- CTEs provide a way to write more readable and maintainable queries by breaking down complex queries into simpler parts.
+- CTEs are defined using the `WITH` keyword.
 
-## Creating a CTE
-* To create a CTE, you use the `WITH` keyword.
+## Creating a CTE 
+- To create a CTE, you use the `WITH` keyword.
 ```sql
 -- Define a CTE to get employees with job title 'manager'
 WITH Managers AS (
@@ -73,8 +73,9 @@ WITH RunningTotal AS (
 SELECT empno, ename, deptno, sal, running_total
 FROM RunningTotal;
 ```
-## Using Multiple CTEs
-* You can define multiple CTEs in a single query, separated by commas.
+
+## Using Multiple CTEs 
+- You can define multiple CTEs in a single query, separated by commas.
 ```sql
 -- Define CTEs to calculate total salary and average salary by department
 WITH TotalSalary AS (
@@ -109,12 +110,13 @@ SELECT ts.deptno, ts.total_sal, tb.total_budget
 FROM TotalSalary ts
 JOIN TotalBudget tb ON ts.deptno = tb.deptno;
 ```
-## Recursive CTEs
-* Recursive CTEs are used to perform operations like traversing hierarchical data or generating sequences.
-* Recursive CTEs use the RECURSIVE keyword and consist of two parts: an anchor member and a recursive member.
+
+## Recursive CTEs 
+- Recursive CTEs are used to perform operations like traversing hierarchical data or generating sequences.
+- Recursive CTEs consist of two parts: an anchor member and a recursive member.
 ```sql
 -- Define a recursive CTE to generate a sequence of numbers
-WITH Sequence AS (
+WITH RECURSIVE Sequence AS (
     SELECT 1 AS num
     UNION ALL
     SELECT num + 1
@@ -125,7 +127,7 @@ SELECT num
 FROM Sequence;
 
 -- Define a recursive CTE to find the management hierarchy
-WITH EmpHierarchy AS (
+WITH RECURSIVE EmpHierarchy AS (
     -- Anchor member: select the top-level manager (president)
     SELECT empno, ename, job, mgr
     FROM employees.emp
@@ -142,15 +144,17 @@ WITH EmpHierarchy AS (
 SELECT *
 FROM EmpHierarchy;
 ```
-## Common Use Cases for CTEs
-* Breaking down complex queries into simpler, more manageable parts.
-* Improving readability and maintainability of SQL code.
-* Recursively traversing hierarchical data.
-* Generating sequences or performing iterative calculations.
-## Benefits of Using CTEs
-* Enhanced code readability and organization.
-* Ability to reference the same CTE multiple times in a query.
-* Simplified complex queries by breaking them into smaller, logical components.
+
+## Common Use Cases for CTEs 
+- Breaking down complex queries into simpler, more manageable parts.
+- Improving readability and maintainability of SQL code.
+- Recursively traversing hierarchical data.
+- Generating sequences or performing iterative calculations.
+
+## Benefits of Using CTEs 
+- Enhanced code readability and organization.
+- Ability to reference the same CTE multiple times in a query.
+- Simplified complex queries by breaking them into smaller, logical components.
 
 ##### [Back To Context](./README.md)
 ***
