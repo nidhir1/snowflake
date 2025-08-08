@@ -126,3 +126,173 @@ Benefits
 *	Zero-copy cloning for testing older states   *without using extra storage.
 *	Audit & compliance — see exactly what data looked like in the past.
 
+
+#### Ques 6. How Does Snowflake Handle Concurrency?
+##### Concurrency in Snowflake refers to the ability to handle multiple users or processes running queries simultaneously without conflicts or performance degradation.
+Snowflake handles concurrency automatically and efficiently, using its multi-cluster shared data architecture.
+________________________________________
+✅ Key Mechanisms Snowflake Uses to Handle Concurrency
+| Mechanism                                    | Description                                                                                                                 |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Multi-Cluster Virtual Warehouses**         | Snowflake can automatically start additional compute clusters for a warehouse if many users or queries are running at once. |
+| **Independent Compute & Storage**            | Since compute (virtual warehouses) and storage are separated, many users can query the same data without interfering.       |
+| **Automatic Query Queuing & Load Balancing** | If all clusters are busy, queries are temporarily queued and executed once resources free up.                               |
+| **Result Caching**                           | If a query has already been executed, Snowflake may return results from cache, avoiding repeated work.                      |
+
+
+#### Ques 7.  What is Zero-Copy Cloning in Snowflake?
+##### Zero-copy cloning is a unique Snowflake feature that allows you to create a full copy of a database, schema, or table instantly — without duplicating the actual data.
+* ✅ No physical data copy = zero additional storage cost (initially)
+* ✅ Fast and efficient — clones are created in seconds
+* ✅ Ideal for dev, test, backup, and branching use cases
+##### 🧠 How It Works
+*	Clone shares the underlying storage (data blocks) with the original.
+*	Any changes after cloning (in either object) are stored separately — called copy-on-write.
+*	So you pay only for new or modified data, not for the full clone.
+##### Limitations
+*	Clone and original share the same data until modified → deleting original may affect Time Travel of the clone
+*	No cross-account cloning (only within same Snowflake account)
+*	Does not copy external stages or file formats.
+
+## Intermediate interview questions in Snowflakes:
+
+#### Ques: Explain Snowflake Architecture.
+
+![Snowflake Architecture Explained](image.png)  
+##### Snowflake Architecture Explained (Image source: [Snowflake documentation](https://docs.snowflake.com/en/user-guide/intro-key-concepts))
+
+
+Snowflake is a cloud-native data platform built with a unique architecture that separates storage, compute, and services, enabling scalability, concurrency, and elasticity.
+
+1. Database Storage Layer
+*	Stores all data in cloud storage (AWS S3, Azure Blob, or Google Cloud Storage).
+*	Data is automatically compressed, encrypted, and stored in immutable micro-partitions (~16 MB each).
+*	Storage scales independently of compute.
+*	Allows data sharing and time travel by versioning stored data.
+________________________________________
+2. Compute Layer (Virtual Warehouses)
+*	Consists of independent, MPP (Massively Parallel Processing) clusters called Virtual Warehouses.
+*	Warehouses perform all query processing: scanning, filtering, joining, aggregating.
+*	Multiple warehouses can run concurrently without resource contention.
+*	Warehouses can auto-scale (multi-cluster) to handle concurrency or auto-suspend/resume to optimize cost.
+________________________________________
+3. Cloud Services Layer
+*	Manages metadata, query parsing/planning, security, authentication, transaction management, and optimizations.
+*	Coordinates tasks like query compilation, result caching, and access control.
+*	Handles user sessions, cloud infrastructure management, and storage management.
+*	This layer is fully managed by Snowflake, transparent to users.
+________________________________________
+🔄 How the Layers Work Together
+1.	User submits a query to Snowflake.
+2.	Cloud Services layer parses and plans the query.
+3.	Compute layer (virtual warehouse) executes the query by accessing data from the storage layer.
+4.	Results are returned to the user, with metadata updated by Cloud Services.
+________________________________________
+##### 📊 Key Benefits of Snowflake’s Architecture
+| **Feature**                     | **Benefit**                                                           |
+| ------------------------------- | --------------------------------------------------------------------- |
+| Separation of Compute & Storage | Scale storage and compute independently, pay only for what you use    |
+| Multi-Cluster Warehouses        | Handle unlimited concurrency by spinning up multiple compute clusters |
+| Automatic Scaling               | Warehouses can auto-suspend/resume to optimize costs                  |
+| Secure Data Sharing             | Share live data instantly without copying or moving data              |
+| Time Travel & Fail-safe         | Query and recover historical data safely                              |
+| Cloud Agnostic                  | Runs on AWS, Azure, or GCP seamlessly                                 |
+
+
+![alt text](image-1.png)
+
+#### Ques What are micro-partitions in Snowflake, and what is its contribution to the platform's data storage efficiency?
+###### Micro-partitions are the fundamental unit of data storage in Snowflake. They are immutable, compressed, columnar storage files that store a subset of table data.
+________________________________________
+###### Key Characteristics of Micro-Partitions:
+*	Size: Typically around 16 MB of uncompressed data each.
+*	Columnar Storage: Data within micro-partitions is stored column-wise, optimizing compression and query performance.
+*	Immutable: Once created, micro-partitions are never updated; new data writes create new micro-partitions.
+*	Metadata-rich: Each micro-partition stores metadata like min/max values, distinct values, and data statistics for columns.
+________________________________________
+###### Contribution to Storage Efficiency and Performance:
+1. Efficient Data Compression
+*	Columnar format allows Snowflake to apply high compression ratios, reducing storage footprint.
+2. Automatic Partitioning
+*	Snowflake automatically partitions tables into micro-partitions—no manual partitioning required.
+3. Pruning (Partition Elimination)
+*	Query optimizer uses micro-partition metadata (min/max column values) to skip irrelevant partitions, scanning only needed data.
+*	This reduces I/O and speeds up queries significantly.
+4. Immutable Storage & Time Travel
+*	Immutable micro-partitions enable efficient versioning for features like Time Travel and Fail-safe, allowing queries on historical data without extra storage overhead.
+5. Scalable & Distributed Storage
+•	Micro-partitions enable Snowflake to scale storage seamlessly on cloud object stores, distributing data efficiently.
+________________________________________
+##### Summary Table
+| **Feature**            | **Benefit**                         |
+| ---------------------- | ----------------------------------- |
+| Micro-partition Size   | Optimal balance of storage & access |
+| Columnar Storage       | High compression, fast column scans |
+| Metadata per Partition | Enables pruning, reduces query scan |
+| Immutable              | Supports Time Travel & cloning      |
+| Automatic              | Simplifies admin & tuning           |
+
+________________________________________
+##### 💡 Interview Tip:
+Explain micro-partitions as Snowflake’s secret sauce that delivers fast queries by scanning minimal data, reduces storage costs through compression, and supports powerful features like Time Travel without user overhead.
+
+
+#### Ques	How do you load data into Snowflake from AWS S3?
+##### Snowflake provides multiple ways to load data from Amazon S3, but the most common and efficient approach is:
+###### Step-by-Step Process
+1. Create a Stage (Reference to S3 Bucket)
+*	Internal Stage → Data stored in Snowflake-managed storage
+*	External Stage → Points to your S3 bucket
+
+###### CREATE STAGE my_s3_stage
+URL = 's3://my-bucket-name/path/'
+STORAGE_INTEGRATION = my_s3_integration
+FILE_FORMAT = (TYPE = CSV FIELD_OPTIONALLY_ENCLOSED_BY = '"' SKIP_HEADER = 1);
+
+###### Create a Storage Integration (One-Time Setup)
+This lets Snowflake access your S3 bucket securely.
+```sql
+CREATE STORAGE INTEGRATION my_s3_integration
+  TYPE = EXTERNAL_STAGE
+  STORAGE_PROVIDER = S3
+  ENABLED = TRUE
+  STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::123456789012:role/my_snowflake_role'
+  STORAGE_ALLOWED_LOCATIONS = ('s3://my-bucket-name/path/');
+```
+*	Then configure AWS IAM to trust Snowflake’s AWS account.
+________________________________________
+###### Create the Target Table in Snowflake
+```sql
+CREATE OR REPLACE TABLE sales_data (
+    order_id INT,
+    product_name STRING,
+    quantity INT,
+    price FLOAT,
+    order_date DATE
+);
+```
+________________________________________
+###### Load Data from S3 to the Table
+```sql
+COPY INTO sales_data
+FROM @my_s3_stage
+FILE_FORMAT = (TYPE = CSV FIELD_OPTIONALLY_ENCLOSED_BY = '"' SKIP_HEADER = 1);
+```
+###### Snowflake reads the files from the S3 stage and loads them into the table. (Optional) Use Snowpipe for Continuous Loading
+* If new files are regularly added to S3, set up Snowpipe for automated, near real-time ingestion:
+```sql
+CREATE PIPE my_pipe
+AS
+COPY INTO sales_data
+FROM @my_s3_stage
+FILE_FORMAT = (TYPE = CSV FIELD_OPTIONALLY_ENCLOSED_BY = '"' SKIP_HEADER = 1);
+```
+| **Step**            | **Why Important?**                        |
+| ------------------- | ----------------------------------------- |
+| Storage Integration | Secure connection between Snowflake & AWS |
+| Stage               | Acts as a pointer to the S3 location      |
+| COPY INTO           | Loads data from stage to Snowflake table  |
+| File Format         | Defines how files are parsed              |
+| Snowpipe            | Automates incremental loading             |
+
+
