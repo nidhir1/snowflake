@@ -32,6 +32,8 @@ Features of Snowflake:
 * Time Travel: Allows you to access historical data (up to 90 days) using AT or BEFORE clause.
 * Zero-copy cloning: Creates a copy of database/table without duplicating the data — fast and storage-efficient.
 
+________________________________________
+
 #### Q2.	What is a Snowflake Schema?
 ##### Answer: A Snowflake Schema is a type of data warehouse schema design that is a normalized version of a star schema. In a snowflake schema:
 *	Dimension tables are split into multiple related tables (normalized).
@@ -41,6 +43,7 @@ Features of Snowflake:
 *	Dimension Tables (surrounding): Describe the context (e.g., customer, product, time).
 *	Each dimension may have sub-dimensions, which leads to a multi-level structure.
 
+________________________________________
 
 #### Q3.	Difference between Database, Schema, and Table in Snowflake?
 ##### Answer: These are hierarchical structures used to organize and manage data in Snowflake.
@@ -55,7 +58,7 @@ Features of Snowflake:
 📘 Hierarchy
  Database  →  Schema  →  Table
 
-
+________________________________________
 
 #### Q4:	What are Virtual Warehouses in Snowflake?
 ##### Virtual Warehouses are the compute resources used to perform all DML (Data Manipulation Language) operations, such as:
@@ -89,10 +92,11 @@ Features of Snowflake:
 ##### Interview Tip:
 * Think of virtual warehouses as Snowflake’s “compute engines” that power your data workloads with flexibility and elasticity.
 
+________________________________________
 	
 #### Q5.	What is Fail-safe in Snowflake?
 ##### Answer :Fail-safe in Snowflake is a 7-day period after the Time Travel retention period during which Snowflake can recover historical data, but only in emergencies — like system failures or accidental data loss.
-________________________________________
+
 #### 🕒 Fail-safe Lifecycle
 1.	Active Data: Data is available and queryable.
 2.	Time Travel Period (up to 90 days):
@@ -101,11 +105,11 @@ o	You can manually query or restore dropped/changed data using AT or BEFORE clau
 *	You cannot access the data directly.
 *	Only Snowflake Support can recover data for disaster recovery.
 
-
+________________________________________
 #### Q6. What is Time Travel in Snowflake?
 ##### Answer: Time Travel in Snowflake is a feature that allows you to query, clone, and restore data from a previous point in time.
 It’s like having a rewind button for your tables, schemas, and databases — useful for recovering from mistakes, auditing, or recreating past states of your data.
-________________________________________
+
 Key Points
 1.	Purpose
   * Recover data that was deleted or modified.
@@ -120,7 +124,7 @@ Key Points
 *	Snowflake stores immutable micro-partitions.
 *	When data changes, Snowflake doesn’t overwrite; it creates new micro-partitions and keeps old ones until the Time Travel retention expires.
 *	Queries with AT or BEFORE retrieve those historical micro-partitions.
-________________________________________
+
 Example Usage
 ```sql
 -- Query a table as it was 2 hours ago
@@ -141,13 +145,13 @@ AT(TIMESTAMP => '2025-08-05 10:00:00');
 -- Undrop a table
 UNDROP TABLE SALES_DB.PUBLIC.CUSTOMERS;
 ```
-________________________________________
-Benefits
+
+#### Benefits
 *	Accidental deletion recovery (no panic needed when someone runs DELETE without a WHERE).
 *	Zero-copy cloning for testing older states   *without using extra storage.
 *	Audit & compliance — see exactly what data looked like in the past.
 
-
+________________________________________
 #### Q7. How Does Snowflake Handle Concurrency?
 ##### Answer: Concurrency in Snowflake refers to the ability to handle multiple users or processes running queries simultaneously without conflicts or performance degradation.
 Snowflake handles concurrency automatically and efficiently, using its multi-cluster shared data architecture.
@@ -160,7 +164,7 @@ ________________________________________
 | **Automatic Query Queuing & Load Balancing** | If all clusters are busy, queries are temporarily queued and executed once resources free up.                               |
 | **Result Caching**                           | If a query has already been executed, Snowflake may return results from cache, avoiding repeated work.                      |
 
-
+________________________________________
 #### Q8.  What is Zero-Copy Cloning in Snowflake?
 ##### Zero-copy cloning is a unique Snowflake feature that allows you to create a full copy of a database, schema, or table instantly — without duplicating the actual data.
 * ✅ No physical data copy = zero additional storage cost (initially)
@@ -175,17 +179,17 @@ ________________________________________
 *	No cross-account cloning (only within same Snowflake account)
 *	Does not copy external stages or file formats.
 
-
+________________________________________
 
 #### Q9. What are micro-partitions in Snowflake, and what is its contribution to the platform's data storage efficiency?
 ###### Micro-partitions are the fundamental unit of data storage in Snowflake. They are immutable, compressed, columnar storage files that store a subset of table data.
-________________________________________
+
 ###### Key Characteristics of Micro-Partitions:
 *	Size: Typically around 16 MB of uncompressed data each.
 *	Columnar Storage: Data within micro-partitions is stored column-wise, optimizing compression and query performance.
 *	Immutable: Once created, micro-partitions are never updated; new data writes create new micro-partitions.
 *	Metadata-rich: Each micro-partition stores metadata like min/max values, distinct values, and data statistics for columns.
-________________________________________
+
 ###### Contribution to Storage Efficiency and Performance:
 1. Efficient Data Compression
 *	Columnar format allows Snowflake to apply high compression ratios, reducing storage footprint.
@@ -198,7 +202,7 @@ ________________________________________
 *	Immutable micro-partitions enable efficient versioning for features like Time Travel and Fail-safe, allowing queries on historical data without extra storage overhead.
 5. Scalable & Distributed Storage
 •	Micro-partitions enable Snowflake to scale storage seamlessly on cloud object stores, distributing data efficiently.
-________________________________________
+
 ##### Summary Table
 | **Feature**            | **Benefit**                         |
 | ---------------------- | ----------------------------------- |
@@ -208,14 +212,14 @@ ________________________________________
 | Immutable              | Supports Time Travel & cloning      |
 | Automatic              | Simplifies admin & tuning           |
 
-________________________________________
+
 ##### 💡 Interview Tip:
 Explain micro-partitions as Snowflake’s secret sauce that delivers fast queries by scanning minimal data, reduces storage costs through compression, and supports powerful features like Time Travel without user overhead.
 
-
+________________________________________
+________________________________________
 ## Intermediate interview questions in Snowflakes:
 
-## Intermediate Interview Questions
 
 | Q# | Question |
 |----|----------|
@@ -254,25 +258,25 @@ Explain micro-partitions as Snowflake’s secret sauce that delivers fast querie
 *	Data is automatically compressed, encrypted, and stored in immutable micro-partitions (~16 MB each).
 *	Storage scales independently of compute.
 *	Allows data sharing and time travel by versioning stored data.
-________________________________________
+
 2. Compute Layer (Virtual Warehouses)
 *	Consists of independent, MPP (Massively Parallel Processing) clusters called Virtual Warehouses.
 *	Warehouses perform all query processing: scanning, filtering, joining, aggregating.
 *	Multiple warehouses can run concurrently without resource contention.
 *	Warehouses can auto-scale (multi-cluster) to handle concurrency or auto-suspend/resume to optimize cost.
-________________________________________
+
 3. Cloud Services Layer
 *	Manages metadata, query parsing/planning, security, authentication, transaction management, and optimizations.
 *	Coordinates tasks like query compilation, result caching, and access control.
 *	Handles user sessions, cloud infrastructure management, and storage management.
 *	This layer is fully managed by Snowflake, transparent to users.
-________________________________________
+
 🔄 How the Layers Work Together
 1.	User submits a query to Snowflake.
 2.	Cloud Services layer parses and plans the query.
 3.	Compute layer (virtual warehouse) executes the query by accessing data from the storage layer.
 4.	Results are returned to the user, with metadata updated by Cloud Services.
-________________________________________
+
 ##### 📊 Key Benefits of Snowflake’s Architecture
 | **Feature**                     | **Benefit**                                                           |
 | ------------------------------- | --------------------------------------------------------------------- |
@@ -286,7 +290,7 @@ ________________________________________
 
 ![alt text](image-1.png)
 
-
+________________________________________
 #### Q11: What is column-level security in Snowflake?
 ##### Answer:Column-level security restricts user access to specific columns within a table, so sensitive data (like PII) is protected from unauthorized users while allowing access to other columns.
  
@@ -329,7 +333,7 @@ GRANT SELECT ON employees_public TO ROLE public_role;
 | Compliance                   | Meet GDPR, HIPAA, and other regulations |
 | Flexible access control      | Dynamic based on roles or context       |
 
-________________________________________
+
 #### Summary Table
 | Method               | Pros                         | Cons                     |
 | -------------------- | ---------------------------- | ------------------------ |
@@ -341,7 +345,7 @@ ________________________________________
 ##### 💡 Interview Tip:
 If asked about column-level security, mention Dynamic Data Masking as Snowflake’s preferred way, complemented by secure views for easier role-based column restrictions.
 
-------
+________________________________________
 #### Q13: How would you implement data masking in Snowflake?
 ##### Answer: In Snowflake, data masking is done using masking policies. A masking policy is a rule that controls how sensitive data is shown to users based on their roles or permissions.
 
@@ -417,7 +421,7 @@ SET MASKING POLICY salary_mask;
 | 3    | Assign Roles – Control which roles see unmasked data |
 | 4    | Query – Masking applied automatically                |
 
-
+________________________________________
 
 #### Q14: Difference Between Transient and Temporary Tables in Snowflake.
 ##### Answer: Both transient and temporary tables are used for short-term data storage, but they have key differences in scope, data retention, and usage.
@@ -432,7 +436,7 @@ ________________________________________
 | Use Case             | Temporary but shared data, short-term workflows | Session-specific temporary data, e.g., intermediate steps in scripts |
 | Lifetime             | Until explicitly dropped                        | Until session ends or disconnects                                    |
 | Syntax               | `CREATE TRANSIENT TABLE my_table ...`           | `CREATE TEMPORARY TABLE my_temp_table ...`                           |
-________________________________________
+
 ##### 📌 When to Use Which?
 *	Transient Tables:
 Use when you want a temporary table shared across sessions/users but don’t want fail-safe storage costs or longer data retention.
@@ -440,7 +444,7 @@ Good for short-term staging or intermediate data during ETL.
 *	Temporary Tables:
 Use for session-scoped temporary data that is discarded after your session ends.
 Ideal for scripts, transformations, or testing within a single session.
-________________________________________
+
 #### Example:
 ```sql
 -- Transient table
@@ -516,13 +520,13 @@ Starting	- Warehouse is provisioning compute resources.
 ###### Failed	- Warehouse is unavailable due to an error.
 * Queries cannot run.
 * Requires manual troubleshooting and restart.
-________________________________________
+
 ##### Key Takeaways
 1.	Auto-Resume Feature: Helps reduce delays by automatically starting the warehouse when queries arrive, but there’s always a startup delay (usually a few seconds).
 2.	Auto-Suspend Feature: Saves cost but may increase latency for the first query after suspension due to warehouse startup.
 •	For low-latency, high-concurrency workloads, keep warehouses started or use multi-cluster warehouses.
 •	For cost savings on intermittent workloads, use auto-suspend with acceptance of slight query latency on first run.
-________________________________________
+
 ##### Summary Table
 | State             | Query Latency            | Compute Availability | Cost Impact                |
 | ----------------- | ------------------------ | -------------------- | -------------------------- |
@@ -541,7 +545,6 @@ ________________________________________
 #### Q17: How does Snowflake handle data distribution and partitioning within its architecture?
 #### How Snowflake Handles Data Distribution and Partitioning
 Snowflake’s architecture abstracts away traditional manual data distribution and partitioning by using automatic micro-partitioning and a shared-nothing architecture with centralized storage.
-________________________________________
 #### Key Concepts:
 1. Automatic Micro-Partitioning
 *	Snowflake automatically divides tables into micro-partitions, typically ~16 MB of compressed columnar data.
@@ -558,8 +561,8 @@ ________________________________________
 *	Users can define clustering keys on large tables to co-locate related data within micro-partitions.
 *	Helps optimize pruning and reduce query costs on very large datasets.
 *	Snowflake also offers automatic clustering as a managed service to maintain clustering over time.
-________________________________________
-Summary Table
+
+##### Summary Table
 | Feature                | Description                                                   | User Control                |
 | ---------------------- | ------------------------------------------------------------- | --------------------------- |
 | Micro-Partitioning     | Automatic, fine-grained partitioning into small data blocks   | No manual effort needed     |
@@ -568,7 +571,7 @@ Summary Table
 | Clustering Keys        | Optional manual clustering to improve pruning on large tables | User-defined                |
 | Automatic Clustering   | Managed background service to maintain clustering             | Optional, Snowflake-managed |
 
-________________________________________
+
 ##### Benefits
 *	Eliminates complex manual partitioning strategies.
 *	Ensures scalable and performant queries.
@@ -579,12 +582,8 @@ ________________________________________
 Emphasize Snowflake’s automatic micro-partitioning combined with metadata pruning as a key innovation that simplifies data distribution and boosts query performance i  n a cloud-native, shared-nothing architecture.
 
 
+________________________________________
 
-
-
-
-
-----
 #### Q18:	How would you set up role-based access control (RBAC)?
 ##### Answer: Snowflake uses a hierarchical role model to manage permissions securely and flexibly. Here’s a step-by-step approach to set up RBAC:
 
@@ -624,7 +623,7 @@ GRANT ROLE data_admin TO USER bob;
 ALTER USER alice SET DEFAULT_ROLE = data_analyst;
 ALTER USER bob SET DEFAULT_ROLE = data_admin;
 ```
-
+________________________________________
 #### Q19:	How does Snowflake handle semi-structured data?
 ##### Answer: Snowflake provides native support for semi-structured data formats like JSON, Avro, Parquet, ORC, and XML — enabling you to load, store, query, and analyze such data without complex transformations.
 
@@ -780,6 +779,7 @@ Automate data loading with cost-effective streaming.
 | Optimize queries         | Reduce data scanned            |
 | Monitor usage regularly  | Prevent surprises              |
 
+________________________________________
 
 #### Q22:Can you explain Snowflake's approach to data security, specifically its always-on encryption?
 ##### Answer: Snowflake is built with a security-first architecture, and one of its core pillars is always-on encryption — ensuring data is protected both at rest and in transit without any user action required.
@@ -888,7 +888,7 @@ ________________________________________
 | Cost Efficiency      | Pay only for compute during transformation runs                       |
 | Flexibility          | Easy to modify or add transformations using SQL                       |
 
-________________________________________
+
 ##### Summary Table
 | Feature        | ETL                                     | ELT                                 |
 | -------------- | --------------------------------------- | ----------------------------------- |
@@ -917,7 +917,7 @@ ________________________________________
 •	Microsoft Azure Data Factory
 •	AWS Glue
 
-
+________________________________________
 
 #### Q26: What is a Snowpipe?
 ##### Answer: Snowpipe is Snowflake’s continuous data ingestion service that automatically loads data from a stage (internal or external) into a Snowflake table as soon as new files arrive — without the need to run manual COPY INTO commands each time.
@@ -972,19 +972,19 @@ ________________________________________
 #### Q27: How Does Data Sharing Work in Snowflake?
 
 ##### Answer:  Snowflake’s Secure Data Sharing feature allows you to share live, read-only data with other Snowflake accounts — without copying or moving the data.
-________________________________________
+
 #### 🧠 Core Concept
 *	Data stays in your Snowflake storage.
 *	Consumers query your shared data directly.
 *	No ETL, no file exports, no duplication → zero extra storage cost.
-________________________________________
+
 #### 🔍 How It Works
 1.	Provider: The Snowflake account that owns the data.
 2.	Consumer: The Snowflake account that queries the data.
 3.	Share: A Snowflake object that contains:
 *	Databases, schemas, tables, views to be shared
 *	Access privileges for consumers
-________________________________________
+
 📘 Steps to Share Data
 ###### On Provider Side:
 ```sql
@@ -1007,7 +1007,7 @@ CREATE DATABASE sales_data FROM SHARE provider_account.my_share;
 -- 2. Query it like any other table
 SELECT * FROM sales_data.public.orders;
 ```
-________________________________________
+
 #### ✅ Types of Data Sharing
 | Type                       | Description                                                                 |
 | -------------------------- | --------------------------------------------------------------------------- |
@@ -1032,7 +1032,7 @@ ________________________________________
 
 #### Q28: How Snowflake Handles Data Distribution and Partitioning?
 ##### Answer: Snowflake’s architecture abstracts away traditional manual data distribution and partitioning by using automatic micro-partitioning and a shared-nothing architecture with centralized storage.
-________________________________________
+
 #### Key Concepts:
 1. Automatic Micro-Partitioning
 *	Snowflake automatically divides tables into micro-partitions, typically ~16 MB of compressed columnar data.
@@ -1050,7 +1050,7 @@ ________________________________________
 *	Helps optimize pruning and reduce query costs on very large datasets.
 *	Snowflake also offers automatic clustering as a managed service to maintain clustering over time.
 
-Summary Table
+##### Summary Table
 | Feature                | Description                                                   | User Control                |
 | ---------------------- | ------------------------------------------------------------- | --------------------------- |
 | Micro-Partitioning     | Automatic, fine-grained partitioning into small data blocks   | No manual effort needed     |
@@ -1105,7 +1105,7 @@ ________________________________________
 ##### 💡 Interview Tip:
 Highlight how this feature balances cost control and performance availability seamlessly, enabling Snowflake’s pay-per-use model.
 ________________________________________
-### Q30: How do you flatten various data types in Snowflake, and how do you handle data type conversions?
+#### Q30: How do you flatten various data types in Snowflake, and how do you handle data type conversions?
 
 ##### Answer:  Snowflake provides the `FLATTEN` table function to work with semi-structured data types like **VARIANT**, **ARRAY**, and **OBJECT**.
 It allows you to convert nested elements into a set of rows for easier querying.
@@ -1159,7 +1159,8 @@ LATERAL FLATTEN(input => transactions.details);
 - Always alias `FLATTEN` output for clarity when joining.
 - Use `OUTER => TRUE` if you want rows returned even when the array/object is empty or null.
 - Flattening is especially useful when combined with semi-structured queries using the `VARIANT` data type.
-
+________________________________________
+________________________________________
 
 ## Advanced Interview Questions
 
@@ -1184,7 +1185,7 @@ LATERAL FLATTEN(input => transactions.details);
 ##### Answer: Clustering in Snowflake is the process of physically ordering the data in a table based on the values of one or more columns (clustering keys) to improve query performance — especially for large tables.
 
 It helps Snowflake prune (skip) unnecessary micro-partitions when executing queries, reducing scan time and cost.
-________________________________________
+
 ###### 🧠 Why Clustering Matters
 * Snowflake stores data in micro-partitions (≈ 16 MB each) in an immutable way.
 * If related rows are stored together, queries can skip scanning irrelevant partitions.
@@ -1229,7 +1230,7 @@ SELECT SYSTEM$CLUSTERING_INFORMATION('orders', '(order_date, customer_id)');
 *	Works best for large, wide tables with predictable query patterns.
 *	Over-clustering can increase storage and maintenance costs.
 
-----
+________________________________________
 #### Q32.	What is automatic clustering?
 ##### Automatic Clustering is a Snowflake feature that automatically maintains the clustering of a table based on a defined clustering key — without manual RECLUSTER commands.
 
@@ -1258,30 +1259,32 @@ CLUSTER BY (order_date);
 
 ALTER TABLE orders SET AUTOMATIC_CLUSTERING = TRUE;
 ```
-________________________________________
+
 #### ⚙️ Internals
 *	Serverless operation → Snowflake manages compute in the background.
 *	Pay-per-use → You are charged separately for clustering maintenance (tracked in AUTOMATIC_CLUSTERING_HISTORY view).
 *	Asynchronous → Re-clustering does not happen instantly, but on a schedule based on changes.
-________________________________________
+
 ##### ✅ Benefits
 *	No manual RECLUSTER needed.
 *	Optimized query performance on large tables.
 *	Fully managed — you just set it and forget it.
-________________________________________
+
 ##### ⚠️ Limitations
 *	Extra cost — charged separately from warehouse compute.
 *	Works best for very large, frequently queried tables.
 *	Not needed if your table is small or naturally ordered.
 *	Over-clustering can increase storage and maintenance costs.
-________________________________________
+
 ##### 💡 Interview Tip: If asked, mention that Automatic Clustering is great for time-series or partitioned-like datasets, but for small datasets or one-time loads, the cost may outweigh the benefit.
+
+________________________________________
 
 #### Q33:	What are Streams and Tasks in Snowflake?
 
 ##### Answer: Streams and Tasks in Snowflake
 In Snowflake, Streams and Tasks are features that help with automation and incremental data processing — often used together for near real-time ETL/ELT pipelines.
-________________________________________
+
 ######  Streams — Change Data Capture (CDC) in Snowflake
 * A Stream is a change tracking object that records inserts, updates, and deletes made to a table.
 * It allows you to query only the delta (new/changed rows) since the last time you read from the stream.
@@ -1330,18 +1333,20 @@ Flow:
 ```sql
 Source Table → Stream (tracks changes) → Task (runs SQL/ETL logic) → Target Table
 ```
-________________________________________
+
 ##### ✅ Benefits
 *	No need to maintain manual offset tracking.
 *	Handles both batch and near-real-time processing.
 *	Fully serverless for orchestration (only warehouse cost for execution).
 *	Easy to chain multiple tasks for complex workflows.
 
+________________________________________
+
 #### Q34.	What is a Materialized View and how is it different from a regular View?
 ##### Answer:A Materialized View is a precomputed and stored result of a query in Snowflake.
 
 Unlike a regular (logical) view, which just stores the SQL definition and runs the query every time you use it, a materialized view stores the query result data and keeps it automatically updated when the underlying table changes.
-________________________________________
+
 ##### 📌 Difference Between Regular View & Materialized View
 | Feature           | Regular View                                       | Materialized View                                        |
 | ----------------- | -------------------------------------------------- | -------------------------------------------------------- |
@@ -1352,7 +1357,7 @@ ________________________________________
 | Cost              | Only query cost when used                          | Storage cost + maintenance compute cost                  |
 | Use Case          | Good for small or infrequently queried datasets    | Good for large datasets with frequent repeated queries   |
 
-________________________________________
+
 🔹 Example
 ```sql
 -- Create a regular view
@@ -1370,7 +1375,7 @@ GROUP BY order_date;
 With daily_sales_mv:
 *	Querying is faster because Snowflake retrieves precomputed results.
 *	Snowflake refreshes the view when orders changes.
-________________________________________
+
 ##### ✅ Advantages of Materialized Views in Snowflake
 *	Query speed → great for analytical dashboards.
 *	Automatic refresh → no need for manual update jobs.
@@ -1387,7 +1392,7 @@ say:
 ######  "When performance is critical for repeated queries on large datasets and the underlying data changes frequently but not constantly, so precomputing results saves cost and time."
 
 
-----
+________________________________________
 
 #### Q35 : How do you monitor and optimize performance in Snowflake?
 ##### Answer: Monitoring Performance
@@ -1464,7 +1469,7 @@ SELECT COUNT(*) FROM sales WHERE region = 'US';
 -- Running again within 24h returns instantly from cache
 ```
 #######	Gotcha: If any underlying table changes, cache is invalidated.
-________________________________________
+
 2. Local Disk Cache (Warehouse-level, per session)
 *	What it is: Stores data from micro-partitions read during queries on the warehouse’s SSD/local storage.
 *	Scope: Specific to the warehouse instance.
@@ -1473,7 +1478,7 @@ ________________________________________
 *	When used: If two queries access the same micro-partitions within the same warehouse session, Snowflake avoids re-reading from cloud storage.
 #####	Example:
 First query loads the needed partitions → second query reuses them faster.
-________________________________________
+
 3️. Remote Disk Cache (Persistent storage cache)
 *	What it is: Snowflake keeps frequently ac
 cessed micro-partitions in remote SSD cache for quicker retrieval than going to cloud storage (S3, Azure Blob, GCS).
@@ -1562,7 +1567,7 @@ Optimizing performance in Snowflake involves tuning warehouse sizing, data organ
 | Query monitoring        | Identify & fix bottlenecks        |
 | Bulk loading & Snowpipe | Efficient data ingestion          |
 
------
+________________________________________
 
 #### Q38: Can you explain how the advanced feature Snowpipe is used for continuous data ingestion?
 ##### Answer: Snowpipe is Snowflake’s serverless, continuous data ingestion service designed to load data automatically and near real-time from cloud storage into Snowflake tables.
@@ -1582,7 +1587,7 @@ High-level architecture of Snowpipe Streaming. Image source: Snowflake documenta
 4. Continuous, Near Real-Time
 *	Files are ingested continuously as they arrive — no manual intervention required.
 *	Latency from file arrival to data availability is typically seconds to minutes.
-________________________________________
+
 #### Key Features of Snowpipe
 | Feature             | Description                                                                            |
 | ------------------- | -------------------------------------------------------------------------------------- |
@@ -1626,7 +1631,7 @@ o	AWS S3 buckets
 o	Azure Blob Storage
 o	Google Cloud Storage
 •	Useful for integrating with existing cloud data pipelines and large datasets.
-________________________________________
+
 ##### Purpose of Staging
 *	Temporary holding area: Data files (CSV, JSON, Parquet, etc.) are uploaded here before ingestion.
 *	Separation of storage and compute: Enables Snowflake to load data efficiently from the staged files.
@@ -1660,21 +1665,21 @@ ________________________________________
 
 #### Q40: What are the different types of caching in Snowflake?
 ##### Answer: Snowflake uses multiple caching layers to boost query performance and reduce compute costs by avoiding unnecessary data processing.
-________________________________________
+
 1. Result Cache
 *	Stores the final results of queries for 24 hours.
 *	If the same query (including text, parameters, and session context) is run again and the underlying data hasn’t changed, Snowflake returns results instantly without using compute resources.
 *	Shared across all users.
-________________________________________
+
 2. Local Disk Cache (Warehouse Cache)
 *	Each virtual warehouse caches data blocks (micro-partitions) on the local SSD storage of the compute nodes.
 *	When a query accesses data that is already cached locally, Snowflake reads it from the cache, reducing latency and cloud storage I/O costs.
 *	Cache is specific to the warehouse cluster and lost when the warehouse is suspended.
-________________________________________
+
 3. Metadata Cache
 *	Metadata about table structures, micro-partition statistics, and query execution plans is cached in the Cloud Services layer.
 *	Speeds up query parsing, optimization, and pruning by avoiding repeated metadata fetches.
-________________________________________
+
 ###### Summary Table
 | Cache Type       | What It Stores                 | Scope                   | Duration                       | Benefit                                 |
 | ---------------- | ------------------------------ | ----------------------- | ------------------------------ | --------------------------------------- |
@@ -1687,7 +1692,7 @@ ________________________________________
 Emphasize how Snowflake’s multi-layer caching helps optimize performance and cost by reusing previous computations and minimizing data scans.
 
 ________________________________________
-What are the different types of caching in Snowflake?
+
 
 ##### Q41: Define the different states of the Snowflake Virtual Warehouse.
 ##### Answer: A Virtual Warehouse in Snowflake goes through several states that represent its lifecycle and availability for query processing:
@@ -1747,13 +1752,13 @@ Starting	- Warehouse is provisioning compute resources.
 ###### Failed	- Warehouse is unavailable due to an error.
 * Queries cannot run.
 * Requires manual troubleshooting and restart.
-________________________________________
+
 ##### Key Takeaways
 1.	Auto-Resume Feature: Helps reduce delays by automatically starting the warehouse when queries arrive, but there’s always a startup delay (usually a few seconds).
 2.	Auto-Suspend Feature: Saves cost but may increase latency for the first query after suspension due to warehouse startup.
 •	For low-latency, high-concurrency workloads, keep warehouses started or use multi-cluster warehouses.
 •	For cost savings on intermittent workloads, use auto-suspend with acceptance of slight query latency on first run.
-________________________________________
+
 ##### Summary Table
 | State             | Query Latency            | Compute Availability | Cost Impact                |
 | ----------------- | ------------------------ | -------------------- | -------------------------- |
@@ -1766,3 +1771,5 @@ ________________________________________
 
 ##### 💡 Interview Tip:
 Explain the trade-off between cost and latency when configuring warehouse auto-suspend/resume, emphasizing how Snowflake balances these with flexible compute scaling.
+________________________________________
+________________________________________
