@@ -116,11 +116,10 @@
 ---
 
 ## Workflow Diagram
-
 ```mermaid
 flowchart LR
   A[Staging: Raw + Cleaned Data] --> B[Transformation & Enrichment]
-  B --> C[Data Modeling (Fact & Dim Tables)]
+  B --> C[Data Modeling - Fact & Dim Tables]
   C --> D[Incremental Loads via Streams & Tasks]
   D --> E[Data Quality Monitoring & Alerts]
   E --> F[Serving Data to BI, ML, APIs]
@@ -132,3 +131,4 @@ flowchart LR
 ---
 
 *This document summarizes typical post-staging Snowflake workflows as applied in industry projects.*
+
