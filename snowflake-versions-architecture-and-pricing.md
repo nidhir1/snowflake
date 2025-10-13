@@ -27,6 +27,25 @@ Snowflake’s architecture is divided into three layers:
 - **Compute Layer**: This layer consists of virtual warehouses that perform all the data processing tasks. You can have multiple warehouses running at the same time, and each can be scaled up or down independently.
 - **Services Layer**: This layer manages all the activities that coordinate Snowflake. It handles authentication, metadata management, query optimization, and access control.
 
+  
+```plaintext
+                +------------------------+
+                |   Cloud Services Layer |
+                | (Auth, Metadata, SQL   |
+                |  Parsing, Optimization)|
+                +-----------+------------+
+                            |
+         +--------------------------------------------+
+         |                 Compute Layer              |
+         | (Virtual Warehouses - Multiple Clusters)   |
+         +--------------------+-----------------------+
+                              |
+                +-------------------------------+
+                |         Storage Layer          |
+                | (Cloud Storage: S3, Blob, GCS) |
+                +-------------------------------+
+```
+
 ### 2. **Multi-Cluster Shared Data**
 
 Snowflake uses a multi-cluster, shared data architecture, which means multiple compute clusters can access the same data without any performance issues. This architecture allows for high concurrency and scalability, making it easy to run many queries simultaneously without slowing down.
