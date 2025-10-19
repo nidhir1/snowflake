@@ -9,7 +9,7 @@
   * Query Processing
   * Cloud Services
 * Warehouse, Role, Database, Schema and Table
-  * Virtual Warehouse | Virtual data warehouse
+  * Virtual Warehouse | Virtual data warehouse0
     * They are compute clusters that power the modern data warehouse, 
     acting as an on-demand resource. It is is an independent compute resource that 
     can be leveraged at any time for SQL execution.

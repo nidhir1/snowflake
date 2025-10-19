@@ -128,19 +128,19 @@
     * Common Use Cases for CTEs
     * Benefits of Using CTEs
 
-## Schemas and Session Context
+## [Schemas and Session Context]
 
-1. **Schemas in Snowflake**
+1. [**Schemas in Snowflake**](snowflake-schema.md)
    - Creation and Real-time Usage of Schemas
    - Permanent and Transient Schemas
    - Managed Schemas in Real-time Usage
 
-2. **Session Context**
+2. [**Session Context**](snowflake-session-context.md)
    - Snowflake Sessions (Workspaces)
    - Session Context: Role, Warehouse, Database, and Schema
    - Working with Fully Qualified Names
 
-3. **Data Loading**
+3. [**Data Loading**](snowflake-data-loading.md)
    - Data Loading with GUI and SQL Scripts
    - Using Query and History Tab in GUI
 

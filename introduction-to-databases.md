@@ -50,6 +50,12 @@ Let’s say you have a collection of books at home, and you want to organize the
    - Year Published: 1997
 3. **Query**: You want to find all the books written by J.K. Rowling. You ask the database, and it shows you a list of her books.
 
+## Types of Databases: 
+1. **OLTP**
+2. **OLAP**
+3. **Data Warehouses**
+
+
 ## Conclusion
 
 Databases are essential tools that help us organize, store, and retrieve large amounts of information efficiently and securely. They are used everywhere, from schools and libraries to businesses and hospitals. Understanding the basics of databases can help you appreciate how information is managed and accessed in our digital world.

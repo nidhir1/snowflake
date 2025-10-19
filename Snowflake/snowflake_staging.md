@@ -1,4 +1,4 @@
-# Snowflake staging — end-to-end process
+# Snowflake staging — end-to-end playbook
 
 **Goal:** reliably land raw source data (files/rows/messages) in a Snowflake staging area (either an external stage or an internal Snowflake stage / RAW schema) so downstream ELT can cleanse/transform it.
 
@@ -34,8 +34,7 @@ Document these and pick an ingestion pattern based on latency, volume, and schem
 | Kafka / event bus | Streaming sink | Snowflake Kafka Connector (or Kafka → S3 → Snowpipe) | Connects topics to Snowflake tables; supports batching and staging. |
 | Databases (OLTP) | Bulk snapshot OR CDC | Bulk export → stage → COPY OR CDC pipeline (Debezium, DMS, 3rd-party CDC) → Kafka/S3 → Snowpipe | For transactional integrity use a log-based CDC tool; for less stringent use full extracts. |
 | SaaS (Salesforce, Stripe, etc.) | Managed connector | Fivetran / Stitch / Airbyte / Matillion → Snowflake | Easiest for SaaS; connectors handle schema mapping & incremental loads. |
-| Files on SFTP/FTP | Agent/worker | Ingest agent → upload to cloud storage → COPY / Snowpipe | Agents (custom or third-party) typically buffer + upload to S3 t
-hen trigger Snowpipe. |
+| Files on SFTP/FTP | Agent/worker | Ingest agent → upload to cloud storage → COPY / Snowpipe | Agents (custom or third-party) typically buffer + upload to S3 then trigger Snowpipe. |
 | Large Parquet data lake | Query-in-place | External tables or stage + COPY for hot data | External tables let Snowflake query objects in S3/GCS directly (lakehouse pattern). |
 | Ad-hoc user uploads (Excel, CSV) | Manual | PUT to internal stage + `COPY INTO` | For small one-offs; convert Excel to CSV or parse upstream. |
 

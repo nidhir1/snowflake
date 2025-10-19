@@ -26,7 +26,7 @@ There are different kinds of cloud platforms, each serving different purposes. H
 
 1. **Infrastructure as a Service (IaaS)**: Provides virtualized computing resources over the internet. Examples include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP).
 2. **Platform as a Service (PaaS)**: Provides a platform allowing customers to develop, run, and manage applications without worrying about the underlying infrastructure. Examples include Google App Engine, Microsoft Azure App Service, and AWS Elastic Beanstalk.
-3. **Software as a Service (SaaS)**: Delivers software applications over the internet, on a subscription basis. Examples include Google Workspace (formerly G Suite), Microsoft Office 365,Salesforce and Snowflakes.
+3. **Software as a Service (SaaS)**: Delivers software applications over the internet, on a subscription basis. Examples include Google Workspace (formerly G Suite), Microsoft Office 365, and Salesforce.
 
 ## How Do Cloud Platforms Work?
 

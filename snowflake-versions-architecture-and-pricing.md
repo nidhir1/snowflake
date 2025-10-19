@@ -18,7 +18,12 @@ Snowflake offers different versions or editions to cater to various needs and bu
 ## Snowflake Architecture
 
 Snowflake's architecture is designed to handle large amounts of data and support high-performance queries. It is unique and different from traditional databases. Here’s a simple breakdown of Snowflake’s architecture:
-
+### **Snowflake Architecture**
+- Shared Disk vs Shared Nothing Architecture
+   - Cluster Nodes and Snowflake Clusters
+   - CPU & Memory Resources in Clusters
+   - Disk Storage and Network Communication
+### **Snowflake Data Warehouse Architecture**
 ### 1. **Three-Layer Architecture**
 
 Snowflake’s architecture is divided into three layers:
@@ -27,7 +32,7 @@ Snowflake’s architecture is divided into three layers:
 - **Compute Layer**: This layer consists of virtual warehouses that perform all the data processing tasks. You can have multiple warehouses running at the same time, and each can be scaled up or down independently.
 - **Services Layer**: This layer manages all the activities that coordinate Snowflake. It handles authentication, metadata management, query optimization, and access control.
 
-  
+
 ```plaintext
                 +------------------------+
                 |   Cloud Services Layer |
@@ -92,6 +97,11 @@ Here are some key benefits:
 ## Conclusion
 
 Snowflake's different versions, unique architecture, and flexible pricing model make it a powerful and cost-effective solution for data storage and processing. Whether you are a small business or a large enterprise, Snowflake provides the tools and features to manage your data efficiently. With Snowflake, you can focus on using your data to gain insights and make informed decisions without worrying about the technical complexities.
+
+
+
+
+
 
 ##### [Back To Context](./README.md)
 ***

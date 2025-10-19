@@ -127,8 +127,6 @@ flowchart LR
   G --> H[Lifecycle Management & Archival]
   H --> B
 ```
-
 ---
 
 *This document summarizes typical post-staging Snowflake workflows as applied in industry projects.*
-
