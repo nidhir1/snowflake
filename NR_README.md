@@ -179,7 +179,7 @@
    - Storage Layer and Metadata Layer
 
 
-3. **Snowflake Procedures & Views**(snowflake-procedures-views.md)
+3. [**Snowflake Procedures & Views**](snowflake-procedures-views.md)
    - Creating and Using Stored Procedures
    - Using CALL Command in Snowflake
    - Views & Query Storage
