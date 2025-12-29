@@ -172,22 +172,21 @@
    - Numeric, String, Binary, Boolean, Date, Time, Semi-Structured Data Types
    - Geospatial & Variant Data Types
 
-2. **Snowflake Cloning (Zero Copy)**
-[Snowflake Cloning](snowflake-cloning.md)
+2. [**Snowflake Cloning (Zero Copy)**](snowflake-cloning.md)
    - Cloning Operations with Snowflake
    - Zero Copy and Schema Level Cloning
    - Real-time Uses: Cloning in Snowflake
    - Storage Layer and Metadata Layer
 
 
-3. **Snowflake Procedures & Views**
+3. **Snowflake Procedures & Views**()
    - Creating and Using Stored Procedures
    - Using CALL Command in Snowflake
    - Views & Query Storage
    - Regular Views, System Predefined Views
 
 ## Security Management
-[Security Management](snowflake-security-management.md)
+[Security Management & RBAC](snowflake-security-management.md)
 1. **Security Management Concepts**
    - Security Entities with Snowflake
    - Securable Objects, Users & Roles
