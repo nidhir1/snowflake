@@ -2,12 +2,12 @@
 
 ## Table of Contents
 
-1.  [Introduction](#introduction)\
+1.  [Introduction](#introduction)
 2.  [Creating and Using Stored
-    Procedures](#creating-and-using-stored-procedures)\
-3.  [Using CALL Command](#using-call-command)\
-4.  [Views in Snowflake](#views-in-snowflake)\
-5.  [System Views & Query Storage](#system-views--query-storage)\
+    Procedures](#creating-and-using-stored-procedures)
+3.  [Using CALL Command](#using-call-command)
+4.  [Views in Snowflake](#views-in-snowflake)
+5.  [System Views & Query Storage](#system-views--query-storage)
 6.  [Best Practices](#best-practices)
 
 ------------------------------------------------------------------------
@@ -194,6 +194,6 @@ FROM INFORMATION_SCHEMA.VIEWS;
 
 ## References
 
--   Snowflake Stored Procedures Docs\
--   Snowflake Views Docs\
+-   Snowflake Stored Procedures Docs
+-   Snowflake Views Docs
 -   Snowflake Account Usage Docs
