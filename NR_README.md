@@ -6,7 +6,7 @@
 * ### [Introduction to Databases](introduction-to-databases.md)
 * ### [Introduction to Data Warehouses](introduction-to-datawarehouses.md)
 * ### [Introduction to Cloud Platforms](introduction-to-cloud-platforms.md)
-* ### [Infrastructure As A Service (IaaS)](platform-as-a-service.md)
+* ### [Infrastructure As A Service (IaaS)](infrastructure-as-a-service.md)
 * ### [Platform As A Service (PaaS)](platform-as-a-service.md)
 * ### [Software As A Service (Saas)](software-as-a-service.md)
 * ### [Introduction To Snowflake](introduction-to-snowflake.md)
@@ -341,4 +341,5 @@
 
 ***
 | &copy; TINITIATE.COM |
+
 |----------------------|
