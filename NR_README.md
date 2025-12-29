@@ -146,23 +146,26 @@
 
 ## Time Travel & Transient Tables
 
-1. **Time Travel Feature in Snowflake**
+1. [**Time Travel Feature in Snowflake**](snowflake-time-travel.md)
    - DML Operations and Silent Audits
    - Continuous Data Protection Life Cycle
    - Invoking Time Travel Feature in Snowflake
 
-2. **Using Time Travel**
+2. [**Using Time Travel**](snowflake-using-time-travel.md)
    - Time Travel using Offset and Query ID Features
    - Data Recovery using TIMESTAMP
    - Fail Safe and UNDROP Operations
 
-3. **Transient Tables**
+3. [**Transient Tables**](snowflake-transient-tables.md)
    - Transient Tables and Real-time Usage
+   - Differences Between Permanent and Transient Tables
    - Restrictions with Permanent Tables
+
+
 
 ## Snowflake Concepts and Administration
 
-1. **Constraints and Data Types**
+1. [**Constraints and Data Types**](snowflake-constraints-data-types.md)
    - Snowflake Constraints, Data Validations
    - NULL and NOT NULL Properties
    - Unique, Primary, and Foreign Keys
@@ -176,10 +179,7 @@
    - Real-time Uses: Cloning in Snowflake
    - Storage Layer and Metadata Layer
 
- ### [Transient Tables](snowflake-transient-tables.md)
-    * Creating Transient Tables
-    * Use Cases for Transient Tables
-    * Differences Between Permanent and Transient Tables
+
 3. **Snowflake Procedures & Views**
    - Creating and Using Stored Procedures
    - Using CALL Command in Snowflake
