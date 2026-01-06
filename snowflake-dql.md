@@ -5,7 +5,7 @@
 
 ##### [Back To Context](./README.md)
 
-# DQL - Data Query Language 
+# DQL - Data Query Language (Select/ Where/ Group By/ Having/ Order By/ Limit)
 - In Snowflake, DQL (Data Query Language) refers to the subset of SQL (Structured Query Language) specifically designed for querying and retrieving data from a Snowflake database.
 - DQL primarily involves the use of SELECT statements to extract information from one or more tables within the database.
 

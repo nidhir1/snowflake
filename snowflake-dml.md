@@ -5,7 +5,7 @@
 
 ##### [Back To Context](./README.md)
 
-# DML - Data Manipulation Language
+# DML - Data Manipulation Language     (Insert/Update/Delete)
 * In Snowflake, Data Manipulation Language (DML) consists of SQL commands that allow users to manipulate data within a database.
 * DML commands are used to perform operations such as inserting, updating, and deleting data.
 

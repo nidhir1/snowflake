@@ -5,7 +5,7 @@
 
 ##### [Back To Context](./README.md)
 
-# DDL - Constraints
+# DDL - Constraints  (Not Null/Unique/Check/Primary Key/Foreign Key)
 * In Snowflake, Data Definition Language (DDL) constraints are also used to enforce rules on the structure of a database table, ensuring data integrity and consistency by enforcing certain conditions on the data being inserted, updated, or deleted in the table.
 * These constraints are applied to columns when the table is created or altered.
 

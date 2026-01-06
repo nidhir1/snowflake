@@ -5,7 +5,8 @@
 
 ##### [Back To Context](./README.md)
 
-# DDL - Data Definition Language
+# DDL - Data Definition Language   (Create/Alter/Drop)
+
 * In Snowflake, DDL (Data Definition Language) encompasses a group of SQL commands that are used to create, modify, and remove the structure of database objects. These objects include tables, indexes, views, schemas, sequences, and more.
 * DDL statements are crucial for establishing the database schema, defining relationships between tables, and ensuring data integrity. They serve as the foundation for organizing and managing data within Snowflake databases.
 
