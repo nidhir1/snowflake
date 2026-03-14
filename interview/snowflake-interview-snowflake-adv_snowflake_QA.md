@@ -1,12 +1,6 @@
-❄️ Advanced Snowflake Features — Deep Practical Guide
+❄️ Advanced Snowflake Features 
 
-Covers:
 
-1️⃣ External storage & Azure
-2️⃣ Snowpipe & incremental ingestion
-3️⃣ Integrations & governance
-4️⃣ Secure data sharing
-5️⃣ Marketplace & publishing
 
 🔹 1️⃣ SNOWFLAKE ON AZURE & EXTERNAL STORAGE
 A. WORKING WITH AZURE STORAGE

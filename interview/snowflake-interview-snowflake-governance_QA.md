@@ -1,8 +1,8 @@
 
 # ❄️ Snowflake — Data Governance, Compliance & Use Cases  
-### (Full Detailed Q&A — Teaching + Interview Guide)
 
----
+
+
 
 ## 1️⃣ DATA GOVERNANCE IN SNOWFLAKE
 

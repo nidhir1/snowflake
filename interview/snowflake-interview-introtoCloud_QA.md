@@ -199,24 +199,27 @@ Yes — most modern architectures use both.
 The lake collects everything, the warehouse delivers high-quality analytics.
 
 ### What is a lakehouse?
-A hybrid model combining lake flexibility and warehouse performance — often built on modern cloud platforms.
+A hybrid model combining lake flexibility and warehouse performance 
+— often built on modern cloud platforms.
 
 ### What is enterprise data warehouse (EDW)?
-A single, centralized, integrated warehouse for the whole company — the “single source of truth”.
+A single, centralized, integrated warehouse for the whole company 
+— the “single source of truth”.
 
 ### What are conformed dimensions?
 Dimensions reused across marts — same customer, product, date everywhere.  
 They ensure reports align across departments.
 
 ### Why are conformed dimensions important?
-Without them, teams report different numbers for the same metric — chaos.  
+Without them, teams report different numbers for the same metric which leads to chaos.  
 They enforce consistency.
 
 ### What is a bus architecture?
 A standardized framework of conformed dimensions and fact tables that allows scalable, modular expansion.
 
 ### What is data lineage?
-A full trace of where data came from, how it transformed, and where it is used — essential for debugging and audits.
+A full trace of where data came from, how it transformed, and where it is used 
+— essential for debugging and audits.
 
 ### What is master data management (MDM)?
 Processes and tools to maintain golden, authoritative records for core entities like customer, product, vendor.

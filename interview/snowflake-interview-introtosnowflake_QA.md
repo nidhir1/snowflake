@@ -1,11 +1,8 @@
 # INTRODUCTION TO SNOWFLAKE — IMPROVED DETAILED ANSWERS
 
-This version removes short answers and explains the ideas clearly so students
-understand **what, why, when, and how**.
 
----
 
-## 🔹 KEY CONCEPT IMPROVEMENTS
+
 
 ### ✅ What is auto-suspend?
 Auto-suspend automatically pauses a virtual warehouse when there is no activity

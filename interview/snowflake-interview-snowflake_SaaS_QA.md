@@ -1,16 +1,6 @@
 # SNOWFLAKE — SAAS CLOUD PLATFORM
-## COMPLETE QUESTION + ANSWER BANK (FINAL MERGED EDITION)
 
-This module explains Snowflake as a **true SaaS cloud data platform** — not just a database.
 
-Students should learn:
-
-- what Snowflake is
-- why it works differently
-- when to use which feature
-- real project reasoning behind choices
-
----
 
 ## 🔹 1. BASIC — FOUNDATIONAL CONCEPTS
 

@@ -1,5 +1,5 @@
 # ❄️ Snowflake — Editions, Architecture & Pricing
-### Full Question Bank + Detailed Answers (Trainer Version)
+
 
 ---
 
