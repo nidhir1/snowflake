@@ -6,7 +6,7 @@
 * ### [Introduction to Databases](introduction-to-databases.md)
 * ### [Introduction to Data Warehouses](introduction-to-datawarehouses.md)
 * ### [Introduction to Cloud Platforms](introduction-to-cloud-platforms.md)
-* ### [Infrastructure As A Service (IaaS)](platform-as-a-service.md)
+* ### [Infrastructure As A Service (IaaS)](infrastructure-as-a-service.md)
 * ### [Platform As A Service (PaaS)](platform-as-a-service.md)
 * ### [Software As A Service (Saas)](software-as-a-service.md)
 * ### [Introduction To Snowflake](introduction-to-snowflake.md)
@@ -128,66 +128,65 @@
     * Common Use Cases for CTEs
     * Benefits of Using CTEs
 
-## Schemas and Session Context
+## [Schemas and Session Context]
 
-1. **Schemas in Snowflake**
+1. [**Schemas in Snowflake**](snowflake-schema.md)
    - Creation and Real-time Usage of Schemas
    - Permanent and Transient Schemas
    - Managed Schemas in Real-time Usage
 
-2. **Session Context**
+2. [**Session Context**](snowflake-session-context.md)
    - Snowflake Sessions (Workspaces)
    - Session Context: Role, Warehouse, Database, and Schema
    - Working with Fully Qualified Names
 
-3. **Data Loading**
+3. [**Data Loading**](snowflake-data-loading.md)
    - Data Loading with GUI and SQL Scripts
    - Using Query and History Tab in GUI
 
 ## Time Travel & Transient Tables
 
-1. **Time Travel Feature in Snowflake**
+1. [**Time Travel Feature in Snowflake**](snowflake-time-travel.md)
    - DML Operations and Silent Audits
    - Continuous Data Protection Life Cycle
    - Invoking Time Travel Feature in Snowflake
 
-2. **Using Time Travel**
+2. [**Using Time Travel**](snowflake-using-time-travel.md)
    - Time Travel using Offset and Query ID Features
    - Data Recovery using TIMESTAMP
    - Fail Safe and UNDROP Operations
 
-3. **Transient Tables**
+3. [**Transient Tables**](snowflake-transient-tables.md)
    - Transient Tables and Real-time Usage
+   - Differences Between Permanent and Transient Tables
    - Restrictions with Permanent Tables
+
+
 
 ## Snowflake Concepts and Administration
 
-1. **Constraints and Data Types**
+1. [**Constraints and Data Types**](snowflake-constraints-data-types.md)
    - Snowflake Constraints, Data Validations
    - NULL and NOT NULL Properties
    - Unique, Primary, and Foreign Keys
    - Numeric, String, Binary, Boolean, Date, Time, Semi-Structured Data Types
    - Geospatial & Variant Data Types
 
-2. **Snowflake Cloning (Zero Copy)**
-[Snowflake Cloning](snowflake-cloning.md)
+2. [**Snowflake Cloning (Zero Copy)**](snowflake-cloning.md)
    - Cloning Operations with Snowflake
    - Zero Copy and Schema Level Cloning
    - Real-time Uses: Cloning in Snowflake
    - Storage Layer and Metadata Layer
 
- ### [Transient Tables](snowflake-transient-tables.md)
-    * Creating Transient Tables
-    * Use Cases for Transient Tables
-    * Differences Between Permanent and Transient Tables
-3. **Snowflake Procedures & Views**
+
+3. [**Snowflake Procedures & Views**](snowflake-procedures-views.md)
    - Creating and Using Stored Procedures
    - Using CALL Command in Snowflake
    - Views & Query Storage
    - Regular Views, System Predefined Views
 
 ## Security Management
-[Security Management](snowflake-security-management.md)
+[Security Management & RBAC](snowflake-security-management.md)
 1. **Security Management Concepts**
    - Security Entities with Snowflake
    - Securable Objects, Users & Roles
@@ -341,4 +340,5 @@
 
 ***
 | &copy; TINITIATE.COM |
+
 |----------------------|
